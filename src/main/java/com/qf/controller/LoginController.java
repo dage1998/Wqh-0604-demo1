@@ -66,6 +66,7 @@ public class LoginController {
     public JsonBean selectLog(HouseLog houseLog){
 
         System.out.println("1111");
+        System.out.println("13213");
         System.out.println(houseLog);
         List<HouseLog> houseLogs = houseLogService.selectLog(houseLog);
         System.out.println(houseLogs);

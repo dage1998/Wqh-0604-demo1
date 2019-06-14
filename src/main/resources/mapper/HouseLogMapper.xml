@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qf.dao.HouseLogMapper">
+    
+    <resultMap id="resultLog" type="com.qf.domain.HouseLog">
+        <id column="id" property="id"/>
+        <result column="IDnumber" property="IDnumber" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="status"     property="status" />
+
+       <association property="houseList" resultMap="resultList"></association>
+    </resultMap>
+
+    <resultMap id="resultList" type="com.qf.domain.HouseList">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="log_list" property="log_list" />
+        <result column="house_type" property="house_type"/>
+        <result column="area" property="area" />
+        <result column="create_time" property="create_time" />
+    </resultMap>
+
+
+    <select id="selectLog" parameterType="com.qf.domain.HouseLog" resultMap="resultLog" >
+
+        select a.IDnumber,a.username,b.id,b.name,b.house_type,b.area,b.create_time from house_log  a left outer join  house_list b on  a.id = b.log_list
+         where 1=1
+         <if test="IDnumber != null and IDnumber !=''">
+            and   a.IDnumber = #{IDnumber}
+         </if>
+        <if test="username != null and username != ''">
+            AND  a.username = #{username}
+        </if>
+    </select>
+
+
+</mapper>

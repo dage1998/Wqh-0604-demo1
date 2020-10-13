@@ -34,7 +34,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.13.1</version>
     </dependency>
     <!-- 1.日志 -->
     <!--&lt;!&ndash; 实现slf4j接口并整合 &ndash;&gt;-->
